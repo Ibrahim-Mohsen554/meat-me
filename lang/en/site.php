@@ -3,5 +3,5 @@
 
 
 return [
-    'dashboard'=> 'الرئيسية'
+    'dashboard'=> 'Dashboard'
 ];
