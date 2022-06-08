@@ -9,9 +9,9 @@
 <!--  Sidebar css -->
 <link href="{{ URL::asset('assets/plugins/sidebar/sidebar.css') }}" rel="stylesheet">
 <!--  Noty -->
-<link rel="stylesheet" href="/noty.css">
-</script>
-<script type="text/javascript" src="/noty.js"></script>
+<link href="{{ URL::asset('assets/plugins/noty_master/lib/themes/metroui.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('assets/plugins/noty_master/lib/noty.css') }}" rel="stylesheet">
+<script type="text/javascript" src="{{ URL::asset('assets/plugins/noty_master/lib/noty.min.js') }}"></script>
 @if (app()->getLocale() == 'ar')
     <!-- Sidemenu css -->
     <link rel="stylesheet" href="{{ URL::asset('assets/css-rtl/sidemenu.css') }}">
