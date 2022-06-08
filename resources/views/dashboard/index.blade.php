@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('pageTitle')
-    Dashboard
+    @lang('site.dashboard')
 @endsection
 @section('css')
 <!--  Owl-carousel css-->

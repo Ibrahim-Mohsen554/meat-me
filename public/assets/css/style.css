@@ -4,7 +4,7 @@
 Project        :   VALEX - HTML5 Bootstrap Admin Template
 Version        :   V.1
 Create Date    :   09/05/20
-Copyright      :   Spruko Technologies Private Limited 
+Copyright      :   Spruko Technologies Private Limited
 Author         :   SprukoSoft
 Author URL     :   https://themeforest.net/user/sprukosoft
 Support	       :   support@spruko.com
@@ -19890,12 +19890,12 @@ object, embed, video {
   color: #0162e8; }
 
 .horizontalMenucontainer .side-menu__icon {
-  font-size: 23px;
+  font-size:18px !important;
   line-height: 0;
   margin-right: 7px;
   width: 22px;
   height: 22px;
-  line-height: 34px;
+  line-height: 22px;
   border-radius: 3px;
   text-align: center;
   color: #a8b1c7;

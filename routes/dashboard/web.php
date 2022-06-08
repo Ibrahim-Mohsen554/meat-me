@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\UserController;
 
 
 
@@ -12,9 +13,10 @@ Route::group(
 ], function(){
 
 Route::prefix('dashboard')->name('dashboard.')->group(function(){
-
-
     Route::get('/index', 'DashboardController@index')->name('index');
+
+    // Users Routes
+    Route::resource('users', 'UserController')->except(['show']);
 
 });
 
