@@ -6,9 +6,13 @@ return [
     // General
     'no_data_found' =>'للاسف لا يوجد اى سجلات',
     'add' =>'اضف',
+    'create' =>'اضافة',
+    'read' =>'عرض',
+    'update' =>'تعديل',
     'edit' =>'تعديل',
     'delete' =>'حذف',
     'added_successfuly'=>'تم أضافة البيانات بنجاح',
+    'permissions'=>'الصلاحيات',
     // menus
     'dashboard'=> 'الرئيسية',
     'users'=> 'المشرفين',

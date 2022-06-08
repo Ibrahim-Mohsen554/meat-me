@@ -29,19 +29,26 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+            // dd($request->permissions );
 
         $request->validate([
             'first_Name'=>'required',
             'last_Name'=>'required',
-            'email'=>'required',
+            'email'=>'required|unique:Users',
             'password'=>'required|confirmed',
 
         ]);
 
-        $request_date = $request->except(['password']);
+        $request_date = $request->except(['password','password_confirmation','permissions']);
         $request_date['password'] = bcrypt($request->password);
 
         $user = User::create($request_date);
+
+        $user->attachRole('admin');
+        $user->syncPermissions($request->permissions);
+
+
+
 
         session()->flash('success',__('site.added_successfuly'));
         return redirect()->route('dashboard.users.index');
