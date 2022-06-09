@@ -21,8 +21,8 @@
                         class="avatar-status profile-status bg-green"></span>
                 </div>
                 <div class="user-info">
-                    <h4 class="font-weight-semibold mt-3 mb-0">Petey Cruiser</h4>
-                    <span class="mb-0 text-muted">Premium Member</span>
+                    <h4 class="font-weight-semibold mt-3 mb-0">{{ auth()->user()->first_Name ." " .auth()->user()->last_Name }}</h4>
+                    <span class="mb-0 text-muted">{{ auth()->user()->email }}</span>
                 </div>
             </div>
         </div>
@@ -38,12 +38,15 @@
                     <span class="side-menu__label">@lang('site.dashboard')</span>
                 </a>
             </li>
-            <li class="slide">
+            @if (auth()->user()->hasPermission('read_users'))
+               <li class="slide">
                 <a class="side-menu__item" href="{{ url('dashboard/' . $page='users') }}">
                    <span class="ti-user side-menu__icon"></span>
                     <span class="side-menu__label">@lang('site.users')</span>
                 </a>
             </li>
+            @endif
+
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="{{ url('dashboard/' . ($page = 'users.index')) }}">
 

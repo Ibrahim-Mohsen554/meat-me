@@ -11,15 +11,24 @@ return [
     'update' =>'تعديل',
     'edit' =>'تعديل',
     'delete' =>'حذف',
+    'products'=>'المنتجات',
+    'categories'=>'الاصناف',
+    'suppliers'=>'الموردين',
+    'customers'=>'العملاء',
+    'logout'=>'تسجيل خروج',
+    'settings'=>'الاعدادت',
+
     'added_successfuly'=>'تم أضافة البيانات بنجاح',
+    'updated_successfuly'=>'تم تعديل البيانات بنجاح',
+    'deleted_successfuly'=>'تم حذف البيانات بنجاح',
     'permissions'=>'الصلاحيات',
     // menus
     'dashboard'=> 'الرئيسية',
-    'users'=> 'المشرفين',
+    'users'=> 'المستخدمين',
     // PageTitles
-    'pageTitle_Users'=> 'المشرفين',
-    'pageTitle_add_user'=> 'اضافة مشرفين',
-    'pageTitle_edit_user'=> 'تعديل المشرفين',
+    'pageTitle_Users'=> 'المستخدمين',
+    'pageTitle_add_user'=> 'اضافة مستخدم',
+    'pageTitle_edit_user'=> 'تعديل مستخدم',
     // Users tables Names
      'firstName'=> 'الاسم الاول',
      'lastName'=> 'الاسم الاخير',

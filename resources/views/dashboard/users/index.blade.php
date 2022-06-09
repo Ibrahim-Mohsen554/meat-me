@@ -42,7 +42,13 @@
             <div class="card">
 
                 <div class="card-header pb-0">
+                    @if (auth()->user()->hasPermission('create_users'))
+
                     <a class=" btn btn-dark " href="{{ route('dashboard.users.create') }}"> <i class="fa fa-plus"></i> @lang('site.add')</a>
+                    @else
+                    <a class=" btn btn-dark disabled " href="#"> <i class="fa fa-plus"></i> @lang('site.add')</a>
+
+                    @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -69,11 +75,18 @@
                                             <td>{{ $user->created_at->format('m-d-Y') }}</td>
 
                                             <td>
-                                                <a class=" btn btn-sm btn-info"
+
+                                                @if (auth()->user()->hasPermission('update_users'))
+                                                   <a class=" btn btn-sm btn-info"
                                                     href="{{ route('dashboard.users.edit', $user->id) }}"
                                                     title="@lang('site.edit')"><i class="las la-pen"></i></a>
+                                                    @else
+                                                    <a class=" btn btn-sm btn-info disabled"
+                                                    href="#"
+                                                    title="@lang('site.edit')"><i class="las la-pen"></i></a>
+                                                @endif
 
-
+                                                @if (auth()->user()->hasPermission('delete_users'))
 
                                                 <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="post" style="display: inline-block">
                                                     {{ method_field('delete') }}
@@ -82,7 +95,9 @@
                                                     <button class=" btn btn-sm btn-danger" type="submit"
                                                         title="@lang('site.delete')"><i class="las la-trash"></i></button>
                                                 </form>
-
+                                                @else
+                                                         <button class=" btn btn-sm btn-danger disabled" type="submit" title="@lang('site.delete')"><i class="las la-trash " ></i></button>
+                                                @endif
 
                                             </td>
                                         </tr>

@@ -93,8 +93,8 @@
 
 
 
-                    </div>
                 </div>
+            </div>
 
 
             <div class="card">
@@ -106,27 +106,41 @@
                             <div class="panel panel-primary tabs-style-2 form-group">
                                 <div class=" tab-menu-heading">
                                     <div class="tabs-menu1">
+                                        @php
+                                            $models = ['users', 'categories', 'products', 'suppliers', 'customers'];
+                                            $maps = ['create', 'read', 'update', 'delete'];
+                                        @endphp
                                         <!-- Tabs -->
                                         <ul class="nav panel-tabs main-nav-line">
-                                            <li><a href="#users" class="nav-link active" data-toggle="tab">@lang('site.users')</a></li>
+
+                                            @foreach ($models as $index => $model)
+                                                <li><a href="#{{ $model }}"
+                                                        class="nav-link {{ $index == 0 ? 'active' : '' }}"
+                                                        data-toggle="tab">@lang('site.' . $model)</a></li>
+                                            @endforeach
+
 
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="panel-body tabs-menu-body main-content-body-right border">
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="users">
+                                        @foreach ($models as $index => $model)
+                                            <div class="tab-pane {{ $index == 0 ? 'active' : '' }}"
+                                                id="{{ $model }}">
+                                                <div class="custom-checkbox custom-control">
 
-                                            <div class="custom-checkbox custom-control">
+                                                    @foreach ($maps as $map)
 
-                                                <label class="ml-2" > <input name="permissions[]" value="create_users"  type="checkbox" > @lang('site.create')</label>
-                                                <label class="ml-2" > <input name="permissions[]" value="read_users"  type="checkbox" > @lang('site.read')</label>
-                                                <label class="ml-2" > <input name="permissions[]" value="update_users"  type="checkbox" > @lang('site.update')</label>
-                                                <label class="ml-2" > <input name="permissions[]" value="delete_users"  type="checkbox" > @lang('site.delete')</label>
+                                                    <label class="ml-2"> <input name="permissions[]"value="{{ $map }}_{{ $model }}" type="checkbox">@lang('site.'.$map)</label>
+
+                                                    @endforeach
+
+
+                                                </div>
                                             </div>
+                                        @endforeach
 
-
-                                        </div>
 
                                     </div>
                                 </div>
@@ -139,7 +153,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+            </form>
         </div>
     </div>
     <!-- row closed -->

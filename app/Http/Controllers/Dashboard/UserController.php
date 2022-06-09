@@ -29,7 +29,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-            // dd($request->permissions );
+            // dd($request->all());
 
         $request->validate([
             'first_Name'=>'required',
@@ -57,18 +57,33 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('dashboard.users.edit');
+        return view('dashboard.users.edit',compact('user'));
     }
 
 
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'first_Name'=>'required',
+            'last_Name'=>'required',
+            'email'=>'required',
+
+
+        ]);
+
+        $request_date = $request->except(['permissions']);
+        $user->syncPermissions($request->permissions);
+        $user->update($request_date);
+          session()->flash('success',__('site.updated_successfuly'));
+        return redirect()->route('dashboard.users.index');
     }
 
 
     public function destroy(User $user)
     {
-        //
+
+        $user->delete();
+        session()->flash('success',__('site.deleted_successfuly'));
+        return redirect()->route('dashboard.users.index');
     }
 }

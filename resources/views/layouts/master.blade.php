@@ -26,8 +26,8 @@
         <div class="container-fluid">
             @yield('page-header')
 
-            @yield('content')
             @include('partials._session')
+            @yield('content')
             @include('layouts.sidebar')
             @include('layouts.models')
             @include('layouts.footer')
