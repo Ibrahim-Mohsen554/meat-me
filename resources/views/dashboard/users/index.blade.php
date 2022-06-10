@@ -89,14 +89,14 @@
                                                 @if (auth()->user()->hasPermission('delete_users'))
 
                                                 <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="post" style="display: inline-block">
-                                                    {{ method_field('delete') }}
                                                     {{ csrf_field() }}
+                                                    {{ method_field('delete') }}
 
-                                                    <button class=" btn btn-sm btn-danger" type="submit"
+                                                    <button class=" btn btn-sm btn-danger delete" type="submit"
                                                         title="@lang('site.delete')"><i class="las la-trash"></i></button>
                                                 </form>
                                                 @else
-                                                         <button class=" btn btn-sm btn-danger disabled" type="submit" title="@lang('site.delete')"><i class="las la-trash " ></i></button>
+                                                         <button class=" btn btn-sm btn-danger delete disabled" type="submit" title="@lang('site.delete')"><i class="las la-trash " ></i></button>
                                                 @endif
 
                                             </td>
@@ -148,8 +148,50 @@
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
     <script>
-        $(document).ready(function() {
+        $('.delete').click(function(e) {
+                    var that = $(this)
 
-        });
+                    e.preventDefault();
+
+                    //     var n = new Noty({
+                    //         text: "@lang('site.confirm_delete')",
+                    //         type:"alert",
+                    //         killer:true,
+                    //         button:[
+
+                    //            Noty.button("@lang('site.yes')",'btn btn-success mr-2',function(){
+                    //             that.closest('form').submit();
+                    //            }) ,
+
+                    //            Noty.button("@lang('site.yes')",'btn btn-success mr-2',function(){
+                    //                 n.close();
+                    //            })
+
+
+                    //         ]
+                    //     }).show();
+                    // })
+
+                  var n =  new Noty({
+                        type: 'warning',
+                        layout: 'topRight',
+                        theme: 'nest',
+                        text: "@lang('site.confirm_delete')",
+                        timeout: 2000,
+                        killer: true,
+                        buttons:[
+
+                               Noty.button("@lang('site.yes')",'btn btn-success mr-2',function(){
+                                that.closest('form').submit();
+                               }) ,
+
+                               Noty.button("@lang('site.no')",'btn btn-dark mr-2',function(){
+                                    n.close();
+                               })
+
+
+                            ]
+                    }).show();
+                })
     </script>
 @endsection

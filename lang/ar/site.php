@@ -21,6 +21,9 @@ return [
     'added_successfuly'=>'تم أضافة البيانات بنجاح',
     'updated_successfuly'=>'تم تعديل البيانات بنجاح',
     'deleted_successfuly'=>'تم حذف البيانات بنجاح',
+    'confirm_delete'=>'تأكيد عملية الحذف',
+    'yes'=>'نعم',
+    'no'=>'لا',
     'permissions'=>'الصلاحيات',
     // menus
     'dashboard'=> 'الرئيسية',
@@ -29,6 +32,12 @@ return [
     'pageTitle_Users'=> 'المستخدمين',
     'pageTitle_add_user'=> 'اضافة مستخدم',
     'pageTitle_edit_user'=> 'تعديل مستخدم',
+    // Login
+    'pageTitle_login'=> 'تسجيل الدخول',
+    'remember_me'=> 'تذكرني',
+    'welcome'=> 'مرحبا بك',
+
+
     // Users tables Names
      'firstName'=> 'الاسم الاول',
      'lastName'=> 'الاسم الاخير',

@@ -9,7 +9,7 @@
 <!--  Sidebar css -->
 <link href="{{ URL::asset('assets/plugins/sidebar/sidebar.css') }}" rel="stylesheet">
 <!--  Noty -->
-<link href="{{ URL::asset('assets/plugins/noty_master/lib/themes/metroui.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('assets/plugins/noty_master/lib/themes/nest.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/plugins/noty_master/lib/noty.css') }}" rel="stylesheet">
 <script type="text/javascript" src="{{ URL::asset('assets/plugins/noty_master/lib/noty.min.js') }}"></script>
 @if (app()->getLocale() == 'ar')

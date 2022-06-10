@@ -17,7 +17,9 @@ return [
 
         ],
 
-        'admin' =>[]
+        'admin' =>[],
+        'customer' =>[],
+        'supplier' =>[],
 
     ],
 
