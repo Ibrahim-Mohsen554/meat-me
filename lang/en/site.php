@@ -17,6 +17,7 @@ return [
     'customers'=>'Clints',
     'logout'=>'Sign out',
     'settings'=>'Settings',
+    'userType'=>'User Type',
 
     'added_successfuly'=>'Data has been added successfully',
     'updated_successfuly'=>'Data has been updated successfully',

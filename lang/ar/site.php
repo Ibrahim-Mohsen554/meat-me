@@ -17,6 +17,7 @@ return [
     'customers'=>'العملاء',
     'logout'=>'تسجيل خروج',
     'settings'=>'الاعدادت',
+    'userType'=>'نوع المستخدم',
 
     'added_successfuly'=>'تم أضافة البيانات بنجاح',
     'updated_successfuly'=>'تم تعديل البيانات بنجاح',
@@ -25,6 +26,7 @@ return [
     'yes'=>'نعم',
     'no'=>'لا',
     'permissions'=>'الصلاحيات',
+    'Roles'=>'الادوار',
     // menus
     'dashboard'=> 'الرئيسية',
     'users'=> 'المستخدمين',

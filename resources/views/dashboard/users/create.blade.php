@@ -3,6 +3,12 @@
     @lang('site.pageTitle_add_user')
 @endsection
 @section('css')
+    <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -89,6 +95,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <select class="form-control select2-no-search" name="user_type" id="user_type">
+                                        {{-- <option label="Admin" value="2" ></option>
+                                        <option label="Customer" value="3"></option>
+                                        <option label="Supplier"value="4" ></option> --}}
+                                        @foreach ($roles as $roles)
+                                            <option value="{{ $roles->id }}">{{ $roles->display_name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
 
 
@@ -99,6 +120,21 @@
 
             <div class="card">
                 <div class="card-body">
+                    <div class="row mb-4 mt-2">
+                        <div class="col-12">
+                            <h3>Roles</h3>
+                            <div class="custom-checkbox custom-control">
+
+
+                                    <label class="ml-2"> <input name="role" value="2"  type="radio">Admin</label>
+                                    <label class="ml-2"> <input name="role" value="3"  type="radio">Customer</label>
+                                    <label class="ml-2"> <input name="role" value="4"  type="radio">Supplier</label>
+
+
+
+                            </div>
+                        </div>
+                    </div>
                     <h4 class="card-title">@lang('site.permissions')</h4>
                     <div class="row">
                         <div class="col-12">
@@ -131,9 +167,9 @@
                                                 <div class="custom-checkbox custom-control">
 
                                                     @foreach ($maps as $map)
-
-                                                    <label class="ml-2"> <input name="permissions[]"value="{{ $map }}_{{ $model }}" type="checkbox">@lang('site.'.$map)</label>
-
+                                                        <label class="ml-2"> <input name="permissions[]"
+                                                                value="{{ $map }}_{{ $model }}"
+                                                                type="checkbox">@lang('site.' . $map)</label>
                                                     @endforeach
 
 

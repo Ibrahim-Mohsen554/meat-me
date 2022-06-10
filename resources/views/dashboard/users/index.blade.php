@@ -59,6 +59,7 @@
                                     <th class="wd-15p border-bottom-0">@lang('site.firstName')</th>
                                     <th class="wd-20p border-bottom-0">@lang('site.lastName')</th>
                                     <th class="wd-20p border-bottom-0">@lang('site.email')</th>
+                                    <th class="wd-20p border-bottom-0 "style="width: 15%">@lang('site.userType')</th>
                                     <th class="wd-15p border-bottom-0">@lang('site.createdAt')</th>
                                     <th class="wd-25p border-bottom-0">@lang('site.action')</th>
                                 </tr>
@@ -71,6 +72,13 @@
                                             <td>{{ $user->first_Name }}</td>
                                             <td>{{ $user->last_Name }}</td>
                                             <td>{{ $user->email }}</td>
+                                            <td>@if ($user->hasRole('customer') )
+                                                <span class="bg-dark text-white pl-3 pr-3">Customer</span>
+                                                @elseif ($user->hasRole('supplier'))
+                                                <span class="bg-dark text-white  pl-3 pr-3">supplier</span>
+                                                @elseif ($user->hasRole('admin'))
+                                                <span class="bg-dark text-white  pl-3 pr-3">Admin</span>
+                                            @endif</td>
 
                                             <td>{{ $user->created_at->format('m-d-Y') }}</td>
 

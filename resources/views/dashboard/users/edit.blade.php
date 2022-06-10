@@ -72,12 +72,35 @@
 
 
 
+
                 </div>
             </div>
 
 
             <div class="card">
                 <div class="card-body">
+                    <div class="row mb-4 mt-2">
+                        <div class="col-12">
+                            <h3>@lang('Roles')</h3>
+                            <div class="custom-checkbox custom-control">
+                                @php
+
+                                    $roles = ['admin', 'customer', 'supplier'];
+
+                                @endphp
+
+
+                                @foreach ($roles as $index => $role)
+                                    <label class="ml-2">
+                                        <input name="role" {{ $user->hasRole($role) ? 'checked' : '' }}
+                                            value="{{ $index + 2 }}" type="radio">{{ $role }}
+                                    </label>
+                                @endforeach
+
+
+                            </div>
+                        </div>
+                    </div>
                     <h4 class="card-title">@lang('site.permissions')</h4>
                     <div class="row">
                         <div class="col-12">

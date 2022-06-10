@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -18,7 +19,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::whereRoleIs('admin')->get();
+        $users = User::all();
         return view('dashboard.users.index',compact('users'));
     }
 
@@ -29,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-       return view('dashboard.users.create');
+        $roles = Role::where('name', '!=', 'super_admin')->get();
+       return view('dashboard.users.create',compact('roles'));
     }
 
 
@@ -43,6 +45,7 @@ class UserController extends Controller
             'email'=>'required|unique:Users',
             'password'=>'required|confirmed',
 
+
         ]);
 
         $request_date = $request->except(['password','password_confirmation','permissions']);
@@ -50,7 +53,7 @@ class UserController extends Controller
 
         $user = User::create($request_date);
 
-        $user->attachRole('admin');
+        $user->attachRole($request->role);
         $user->syncPermissions($request->permissions);
 
 
@@ -63,6 +66,11 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        //    return  dd($user->id);
+
+        // $id = $user->id;
+
+
         return view('dashboard.users.edit',compact('user'));
     }
 
@@ -79,6 +87,7 @@ class UserController extends Controller
 
         $request_date = $request->except(['permissions']);
         $user->syncPermissions($request->permissions);
+        $user->syncRoles([$request->role],$request->id);
         $user->update($request_date);
           session()->flash('success',__('site.updated_successfuly'));
         return redirect()->route('dashboard.users.index');
