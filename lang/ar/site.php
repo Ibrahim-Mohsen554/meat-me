@@ -18,6 +18,8 @@ return [
     'logout'=>'تسجيل خروج',
     'settings'=>'الاعدادت',
     'userType'=>'نوع المستخدم',
+    'image'=>'الصورة الشخصية',
+
 
     'added_successfuly'=>'تم أضافة البيانات بنجاح',
     'updated_successfuly'=>'تم تعديل البيانات بنجاح',

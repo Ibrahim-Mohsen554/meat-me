@@ -5,7 +5,12 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class UserController extends Controller
 {
@@ -37,7 +42,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-            // dd($request->all());
+
 
         $request->validate([
             'first_Name'=>'required',
@@ -48,14 +53,27 @@ class UserController extends Controller
 
         ]);
 
-        $request_date = $request->except(['password','password_confirmation','permissions']);
+    $request_date = $request->except(['password','password_confirmation','permissions','image']);
         $request_date['password'] = bcrypt($request->password);
 
-        $user = User::create($request_date);
 
+
+        if($request->image){
+
+            Image::make($request->image)
+                     ->resize(100,null,function($constraint){
+                          $constraint->aspectRatio();
+            } )
+
+            ->save(public_path(('uploads/user_images/' . $request->image->hashName())));
+
+            $request_date['image'] = $request->image->hashName();
+        }
+
+
+        $user = User::create($request_date);
         $user->attachRole($request->role);
         $user->syncPermissions($request->permissions);
-
 
 
 
@@ -96,6 +114,9 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if($user->image != 'default.jpg'){
+            Storage::disk('public_uploads')->delete('/user_images/'. $user->image);
+        }
 
         $user->delete();
         session()->flash('success',__('site.deleted_successfuly'));

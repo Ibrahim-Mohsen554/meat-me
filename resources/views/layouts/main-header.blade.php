@@ -16,10 +16,7 @@
                 <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
                 <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
             </div>
-            {{-- <div class="main-header-center mr-3 d-sm-none d-md-none d-lg-block">
-                <input class="form-control" placeholder="Search for anything..." type="search"> <button
-                    class="btn"><i class="fas fa-search d-none d-md-block"></i></button>
-            </div> --}}
+
         </div>
         <div class="main-header-right">
             <ul class="nav">
@@ -98,11 +95,11 @@
                 </svg></a>
         </div>
         <div class="dropdown main-profile-menu nav nav-item nav-link">
-            <a class="profile-user d-flex" href=""><img alt="" src="{{ URL::asset('assets/img/faces/6.jpg') }}"></a>
+            <a class="profile-user d-flex" href=""><img alt="" src="{{ '/uploads/user_images/' . auth()->user()->image }}"></a>
             <div class="dropdown-menu">
                 <div class="main-header-profile bg-primary p-3">
                     <div class="d-flex wd-100p">
-                        <div class="main-img-user"><img alt="" src="{{ URL::asset('assets/img/faces/6.jpg') }}"
+                        <div class="main-img-user"><img alt="" src="{{ '/uploads/user_images/' . auth()->user()->image }}"
                                 class=""></div>
                         <div class="mr-3 my-auto">
                             <h6>{{ auth()->user()->first_Name . ' ' }}{{ auth()->user()->last_Name }}</h6><span>{{ auth()->user()->email}}</span>

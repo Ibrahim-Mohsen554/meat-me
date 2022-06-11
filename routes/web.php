@@ -10,22 +10,9 @@ use App\Http\Controllers\Dashboard\DashboardController;
 
 
 require __DIR__.'/auth.php';
-
-
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-    ], function(){
-
-        Route::get('/', function () {
-            return view('dashboard.index');
-        })->middleware(['auth']);
-
-
-
-    });
-
+Route::get('/', function () {
+    return redirect()->route('dashboard.index');
+});
 
 
 // Auth::Routes(['register'=>false]);

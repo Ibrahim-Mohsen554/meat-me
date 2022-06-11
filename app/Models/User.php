@@ -24,8 +24,12 @@ class User extends Authenticatable
         'last_Name',
         'email',
         'password',
+        'image',
     ];
 
+
+
+    protected $appends = ['image_path'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -36,6 +40,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+
     /**
      * The attributes that should be cast.
      *
@@ -45,15 +51,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getFirstNameAttribute($value){
+    public function getFirstNameAttribute($value)
+    {
         return ucfirst($value);
     }
 
-    public function getLastNameAttribute($value){
+    public function getLastNameAttribute($value)
+    {
         return ucfirst($value);
     }
 
-
-
-
+    public function getImagePathAttribute()
+    {
+        return asset('uploads/user_images/'. $this->image);
+    }
 }

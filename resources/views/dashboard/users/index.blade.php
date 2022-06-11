@@ -58,8 +58,9 @@
                                     <th class="wd-15p border-bottom-0" style="width: 3%">#</th>
                                     <th class="wd-15p border-bottom-0">@lang('site.firstName')</th>
                                     <th class="wd-20p border-bottom-0">@lang('site.lastName')</th>
-                                    <th class="wd-20p border-bottom-0">@lang('site.email')</th>
-                                    <th class="wd-20p border-bottom-0 "style="width: 15%">@lang('site.userType')</th>
+                                    <th class="wd-20p border-bottom-0"style="width: 5%">@lang('site.email')</th>
+                                    <th class="wd-20p border-bottom-0"style="width: 10%">@lang('site.image')</th>
+                                    <th class="wd-20p border-bottom-0 "style="width: 12%">@lang('site.userType')</th>
                                     <th class="wd-15p border-bottom-0">@lang('site.createdAt')</th>
                                     <th class="wd-25p border-bottom-0">@lang('site.action')</th>
                                 </tr>
@@ -72,6 +73,7 @@
                                             <td>{{ $user->first_Name }}</td>
                                             <td>{{ $user->last_Name }}</td>
                                             <td>{{ $user->email }}</td>
+                                            <td><img src="{{ $user->image_path }}" alt="" srcset="" style="width: 100px" class="img-thumbnail"></td>
                                             <td>@if ($user->hasRole('customer') )
                                                 <span class="bg-dark text-white pl-3 pr-3">Customer</span>
                                                 @elseif ($user->hasRole('supplier'))
@@ -111,7 +113,7 @@
                                         </tr>
                                     @endforeach
                                 @else
-                                    @lang('site.no_data_found')
+                                 @lang('site.no_data_found')
                                 @endif
 
                             </tbody>
